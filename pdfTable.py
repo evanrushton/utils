@@ -20,10 +20,12 @@ inFile = sys.argv[1]
 tables = tabula.read_pdf(inFile, pages='all', multiple_tables=True, guess=False)
 # Print to console
 #i = 0
-data = tables.str.extract(r'(
 
-# detectdate ([0-1][1-9]/[0-3][0-9]\s/b)([a-zA-Z0-9\s.\-]+$) nd rest of text
-# detect $ and value in cell
+# detect date ([0-1][1-9]/[0-3][0-9]\s/b)
+# rest of text ([a-zA-Z0-9\s.\-]+$) 
+# $ value (^\$[0-9]+\.[0-9][0-9])
+data = tables.str.extract(r'([0-1][1-9]/[0-3][0-9]\s/b)([a-zA-Z0-9\s.\-]+$)(^\$[0-9]+\.[0-9][0-9])')
+print data
 
 # Convert data list to df and save as csv
 # df = pd.DataFrame(data, columns = ['date', 'amount', 'description'])
