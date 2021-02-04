@@ -25,7 +25,7 @@ tables = tabula.read_pdf(inFile, pages='all', multiple_tables=True, guess=False)
 # rest of text ([a-zA-Z0-9\s.\-]+$) 
 # $ value (^\$[0-9]+\.[0-9][0-9])
 data = tables.str.extract(r'([0-1][1-9]/[0-3][0-9]\s/b)([a-zA-Z0-9\s.\-]+$)(^\$[0-9]+\.[0-9][0-9])')
-print data
+print(data)
 
 # Convert data list to df and save as csv
 # df = pd.DataFrame(data, columns = ['date', 'amount', 'description'])
